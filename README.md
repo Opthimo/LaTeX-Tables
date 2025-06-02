@@ -1,51 +1,160 @@
 <!---
 {
-  "depends_on": [],
+  "id": "fc36b61a-a948-4971-87b1-dcf98a1c5d80",
+  "depends_on": ["00650b50-14de-471d-a347-246f47ffadde"],
   "author": "Stephan Bökelmann",
-  "first_used": "2025-03-17",
-  "keywords": ["learning", "exercises", "education", "practice"]
+  "first_used": "2025-06-02",
+  "keywords": ["LaTeX", "tables", "tabular", "vim", "compilation"]
 }
 --->
 
-# Learning Through Exercises
+# Creating Tables in LaTeX
 
-## Introduction
-Learning by doing is one of the most effective methods to acquire new knowledge and skills. Rather than passively consuming information, actively engaging in problem-solving fosters deeper understanding and long-term retention. By working through structured exercises, students can grasp complex concepts in a more intuitive and applicable way. This approach is particularly beneficial in technical fields like programming, mathematics, and engineering.
+> In this exercise you will learn how to create and format basic tables using the `tabular` environment in LaTeX. Furthermore we will explore column alignment, borders, and simple styling options.
+
+### Introduction
+
+Tables are essential for presenting structured data clearly and compactly. In LaTeX, tables are created using the `tabular` environment, which gives you full control over column alignment, borders, and spacing. Unlike word processors that allow you to draw tables visually, LaTeX requires you to define the structure and content explicitly in code.
+
+The `tabular` environment is initiated with `\begin{tabular}{...}` where the argument specifies column formatting. Each column is defined by a character:
+
+* `l` for left-aligned
+* `c` for centered
+* `r` for right-aligned
+* `|` to insert vertical lines
+
+Rows are separated by `\\` and columns by `&`. Horizontal lines can be added using `\hline`. This approach allows precise, repeatable, and predictable table layouts that integrate well with LaTeX's overall philosophy of content-presentation separation.
+
+Although LaTeX tables may seem verbose at first, their explicit structure becomes very powerful when creating professional documents that require consistent formatting. Mastering tables now will prepare you for more advanced topics such as floating tables, longtables, multirow, multicolumn, and tables in academic journal templates.
+
+In this exercise, you will build several tables of increasing complexity to become comfortable with this crucial feature of LaTeX.
 
 ### Further Readings and Other Sources
-- [The Importance of Practice in Learning](https://www.sciencedirect.com/science/article/pii/S036013151300062X)
-- "The Art of Learning" by Josh Waitzkin
-- [How to Learn Effectively: 5 Key Strategies](https://www.edutopia.org/article/5-research-backed-learning-strategies)
+
+* [Overleaf: Tables](https://www.overleaf.com/learn/latex/Tables)
+* [LaTeX Wikibook - Tables](https://en.wikibooks.org/wiki/LaTeX/Tables)
+* [LaTeX Tables YouTube Tutorial](https://www.youtube.com/watch?v=oA2H4yrKcjs)
+* [The LaTeX Companion (Book)](https://doi.org/10.1007/978-3-319-27232-5)
+
+---
 
 ## Tasks
-1. **Write a Summary**: Summarize the concept of "learning by doing" in 3-5 sentences.
-2. **Example Identification**: List three examples from your own experience where learning through exercises helped you understand a topic better.
-3. **Create an Exercise**: Design a simple exercise for a topic of your choice that someone else could use to practice.
-4. **Follow an Exercise**: Find an online tutorial that includes exercises and complete at least two of them.
-5. **Modify an Existing Exercise**: Take a basic problem from a textbook or online course and modify it to make it slightly more challenging.
-6. **Pair Learning**: Explain a concept to a partner and guide them through an exercise without giving direct answers.
-7. **Review Mistakes**: Look at an exercise you've previously completed incorrectly. Identify why the mistake happened and how to prevent it in the future.
-8. **Time Challenge**: Set a timer for 10 minutes and try to solve as many simple exercises as possible on a given topic.
-9. **Self-Assessment**: Create a checklist to evaluate your own performance in completing exercises effectively.
-10. **Reflect on Progress**: Write a short paragraph on how this structured approach to exercises has influenced your learning.
 
-<details>
-  <summary>Tip for Task 5</summary>
-  Try making small adjustments first, such as increasing the difficulty slightly or adding an extra constraint.
-</details>
+### Task 0: Create a New LaTeX File
+
+Open Vim and create a new file:
+
+```bash
+vim tables.tex
+```
+
+Insert the following base structure:
+
+```latex
+\documentclass{article}
+\begin{document}
+
+Your content goes here.
+
+\end{document}
+```
+
+Save and exit Vim.
+
+### Task 1: Create a Simple Table Without Borders
+
+Replace `Your content goes here.` with:
+
+```latex
+\section{Simple Table}
+
+\begin{tabular}{lcr}
+Name & Age & Country \\
+Alice & 30 & USA \\
+Bob & 25 & Canada \\
+Charlie & 35 & UK \\
+\end{tabular}
+```
+
+Compile with:
+
+```bash
+pdflatex tables.tex
+```
+
+Observe how the data is aligned based on the column specifiers: left (`l`), center (`c`), and right (`r`).
+
+### Task 2: Add Borders to the Table
+
+Modify the table to include vertical and horizontal lines:
+
+```latex
+\section{Table with Borders}
+
+\begin{tabular}{|l|c|r|}
+\hline
+Name & Age & Country \\
+\hline
+Alice & 30 & USA \\
+Bob & 25 & Canada \\
+Charlie & 35 & UK \\
+\hline
+\end{tabular}
+```
+
+Recompile and verify that the borders are displayed.
+
+### Task 3: Add a Caption and Centering
+
+Tables are often centered and given captions to improve readability.
+
+```latex
+\section{Formatted Table}
+
+\begin{center}
+\begin{tabular}{|l|c|r|}
+\hline
+Name & Age & Country \\
+\hline
+Alice & 30 & USA \\
+Bob & 25 & Canada \\
+Charlie & 35 & UK \\
+\hline
+\end{tabular}
+\end{center}
+```
+
+Alternatively, you can also use the `table` environment for better placement control (will be covered in future exercises).
+
+### Task 4: Create a Table with Multiline Headers
+
+```latex
+\section{Advanced Table}
+
+\begin{tabular}{|l|c|r|}
+\hline
+\textbf{Name} & \textbf{Age} & \textbf{Country} \\
+\hline
+Alice & 30 & USA \\
+Bob & 25 & Canada \\
+Charlie & 35 & UK \\
+\hline
+\end{tabular}
+```
+
+Compile and verify that headers are bold.
+
+---
 
 ## Questions
-1. What are the main benefits of learning through exercises compared to passive learning?
-2. How do exercises improve long-term retention?
-3. Can you think of a subject where learning through exercises might be less effective? Why?
-4. What role does feedback play in learning through exercises?
-5. How can self-designed exercises improve understanding?
-6. Why is it beneficial to review past mistakes in exercises?
-7. How does explaining a concept to someone else reinforce your own understanding?
-8. What strategies can you use to stay motivated when practicing with exercises?
-9. How can timed challenges contribute to learning efficiency?
-10. How do exercises help bridge the gap between theory and practical application?
+
+1. What does the argument to the `tabular` environment specify?
+2. How does LaTeX distinguish between columns and rows?
+3. How can you add horizontal and vertical lines in a table?
+4. Why might you want to use the `table` environment instead of just `tabular`?
+
+---
 
 ## Advice
-Practice consistently and seek out diverse exercises that challenge different aspects of a topic. Combine exercises with reflection and feedback to maximize your learning efficiency. Don't hesitate to adapt exercises to fit your own needs and ensure that you're actively engaging with the material, rather than just going through the motions.
 
+Learning to create tables in LaTeX may initially feel like extra work compared to graphical tools. However, the precision and reproducibility you gain are invaluable for professional documents. Focus on understanding how column alignment, lines, and formatting work together. Once you master these basics, more advanced packages like `booktabs`, `longtable`, and `tabularx` will allow you to create highly customized and elegant tables. Patience with the syntax now will pay off as your documents grow in complexity.
