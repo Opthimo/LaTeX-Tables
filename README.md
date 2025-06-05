@@ -149,9 +149,23 @@ Compile and verify that headers are bold.
 ## Questions
 
 1. What does the argument to the `tabular` environment specify?
+
+The argument to the tabular environment (e.g., {lcr}) specifies the alignment of each column:
+l for left, c for center, and r for right.
+
 2. How does LaTeX distinguish between columns and rows?
+
+LaTeX separates columns with & and ends rows with \\.
+
 3. How can you add horizontal and vertical lines in a table?
+
+Use \hline for horizontal lines and | in the column specification 
+(e.g., {|c|c|}) for vertical lines.
+
 4. Why might you want to use the `table` environment instead of just `tabular`?
+
+The table environment allows you to add captions, labels, and positioning controls, 
+making the table float and integrate better with the document structure.
 
 ---
 
